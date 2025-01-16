@@ -1,0 +1,21 @@
+﻿@model RestaurantBookingApp.Models.Restaurant
+
+<h2>@Model.Name - Details</h2>
+
+<!-- Restaurant Information -->
+<div>
+    <p><strong>Name:</strong> @Model.Name</p>
+    <p><strong>Address:</strong> @Model.Address</p>
+    <p><strong>Opening Time:</strong> @Model.OpeningTime.ToString(@"hh\:mm")</p>
+    <p><strong>Closing Time:</strong> @Model.ClosingTime.ToString(@"hh\:mm")</p>
+</div>
+
+<!-- Booking Button -->
+<p>
+    @Html.ActionLink("Book a Table", "Book", "Booking", new { id = Model.Id }, new { @class = "btn btn-primary" })
+</p>
+
+<!-- Back Button -->
+<p>
+    @Html.ActionLink("Back to Restaurant List", "Index", "Restaurants", null, new { @class = "btn btn-primary" })
+</p>

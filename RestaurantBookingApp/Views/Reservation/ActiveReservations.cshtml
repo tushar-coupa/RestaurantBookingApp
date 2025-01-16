@@ -1,0 +1,27 @@
+﻿@model IEnumerable<RestaurantBookingApp.ViewModel.ReservationView>
+
+<h2>My Active Reservations</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Restaurant Name</th>
+            <th>Table Number</th>
+            <th>Booking Date & Time</th>
+            <th>Number of Guests</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.RestaurantName</td>
+                <td>@booking.TableNumber</td>
+                <td>@booking.BookingDateTime.ToString("f")</td>
+                <td>@booking.NumOfGuest</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Index", "Restuarant")" class="btn btn-primary">Back to Home</a>

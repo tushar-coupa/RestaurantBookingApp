@@ -1,0 +1,28 @@
+﻿@model IEnumerable<RestaurantBookingApp.Models.Restaurant>
+
+<h2>List of Restaurants</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Opening Time</th>
+            <th>Closing Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var restaurant in Model)
+        {
+            <tr>
+                <td><a href="@Url.Action("Details", "RestaurantDetails", new { id = restaurant.Id })" class="btn btn-primary">@restaurant.Name</a></td>
+                <td>@restaurant.Address</td>
+                <td>@restaurant.OpeningTime.ToString(@"hh\:mm")</td>
+                <td>@restaurant.ClosingTime.ToString(@"hh\:mm")</td>
+                <td>
+                    @Html.ActionLink("Book Now", "Book", "Booking", new { id = restaurant.Id }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿@model RestaurantBookingApp.Models.Table
+
+<h2>Edit Table</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.RestaurantId)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TableNumber)
+        @Html.TextBoxFor(model => model.TableNumber, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Capacity)
+        @Html.TextBoxFor(model => model.Capacity, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ReservationDuration)
+        @Html.TextBoxFor(model => model.ReservationDuration, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">Update Table</button>
+}

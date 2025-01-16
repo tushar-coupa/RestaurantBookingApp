@@ -1,0 +1,56 @@
+﻿@model RestaurantBookingApp.Models.Booking
+
+<h2>Make a Booking</h2>
+
+@using (Html.BeginForm("Book", "Booking", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.RestuarantId)
+    @Html.HiddenFor(model => model.UserId)
+
+    <!-- Booking Date and Time -->
+    <div class="form-group">
+        <label for="BookingDateTime">Booking Date & Time:</label>
+        @Html.TextBoxFor(model => model.BookingDateTime, new { @type = "datetime-local", @class = "form-control", required = "required", id = "bookingDateTime" })
+    </div>
+
+    <!-- Number of Guests -->
+    <div class="form-group">
+        <label for="NumOfGuest">Number of Guests:</label>
+        @Html.TextBoxFor(model => model.NumOfGuest, new { @class = "form-control", required = "required", type = "number", min = "1" })
+    </div>
+
+    <!-- Table Selection -->
+    <div class="form-group">
+        <label for="TableId">Select Table:</label>
+        @Html.DropDownList("TableId", new SelectList(ViewBag.Tables, "Id", "TableNumber"), "Select a Table", new { @class = "form-control", required = "required" })
+    </div>
+
+    <!-- Validation Message -->
+<p id="validationMessage" style="color: red; display: none;">This table is not available during the selected time. Please select other table or other time slot.</p>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-success" id="submitBooking">Confirm Booking</button>
+}
+
+<!-- JavaScript for Validation -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('#submitBooking').click(function (event) {
+        event.preventDefault();
+        var restaurantId = @Model.RestuarantId;
+        var tableId = $('#TableId').val();
+        var bookingDateTime = $('#bookingDateTime').val();
+
+        $.getJSON('/BookingValidation/IsSlotAvailable',
+                  { restaurantId: restaurantId, tableId: tableId, bookingDateTime: bookingDateTime },
+                  function (isAvailable) {
+                      if (isAvailable) {
+                          $('form').submit();
+                      } else {
+                          $('#validationMessage').show();
+                      }
+                  });
+    });
+</script>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<RestaurantBookingApp.Models.Table>
+@{
+    ViewBag.Title = "Tables";
+}
+
+<h2>Tables Management</h2>
+<p>
+    @Html.ActionLink("Add New Table", "Create", new { restaurantId = ViewBag.RestaurantId }, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Table Number</th>
+            <th>Capacity</th>
+            <th>Reservation Duration (minutes)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var table in Model)
+        {
+            <tr>
+                <td>@table.TableNumber</td>
+                <td>@table.Capacity</td>
+                <td>@table.ReservationDuration</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = table.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = table.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

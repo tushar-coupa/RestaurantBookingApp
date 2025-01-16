@@ -1,0 +1,50 @@
+﻿@model IEnumerable<RestaurantBookingApp.ViewModel.ManagerBookingViewModel>
+
+<h2>Active Upcoming Bookings</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Booking  Id</th>
+            <th>Booking Date & Time</th>
+            <th>Number of Guests</th>
+            <th>Table Number</th>
+            <th>Status</th>
+            <th>Update Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.UserName</td>
+                <td>@booking.BookingId</td>
+                <td>@booking.BookingDateTime.ToString("f")</td>
+                <td>@booking.NumOfGuest</td>
+                <td>@booking.TableNumber</td>
+                <td>@booking.Status</td>
+                <td>
+                    @using (Html.BeginForm("UpdateBookingStatus", "ManageBookings", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("bookingid", booking.BookingId)
+                        @Html.DropDownList("status",
+                            Enum.GetValues(typeof(RestaurantBookingApp.Models.StatusType))
+                                .Cast<RestaurantBookingApp.Models.StatusType>()
+                                .Select(e => new SelectListItem
+                                {
+                                    Text = e.ToString(),
+                                    Value = e.ToString()
+                                }),
+                            new { @class = "form-control" })
+
+                        <button type="submit" class="btn btn-primary" style="margin-top: 5px;">Update</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-primary">Back to Home</a>
