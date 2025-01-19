@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantBookingApp.Web", "RestaurantBookingApp\RestaurantBookingApp.Web.csproj", "{3119EA8D-E93B-47B5-89BC-7EDDDFEFF207}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantBookingApp.Web", "..\OnboardingProject\RestaurantBookingApp\ResturantBoookingApp.Web\RestaurantBookingApp.Web.csproj", "{C4DEC057-2653-4975-8136-97628650C527}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3119EA8D-E93B-47B5-89BC-7EDDDFEFF207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3119EA8D-E93B-47B5-89BC-7EDDDFEFF207}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3119EA8D-E93B-47B5-89BC-7EDDDFEFF207}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3119EA8D-E93B-47B5-89BC-7EDDDFEFF207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4DEC057-2653-4975-8136-97628650C527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4DEC057-2653-4975-8136-97628650C527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4DEC057-2653-4975-8136-97628650C527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4DEC057-2653-4975-8136-97628650C527}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
